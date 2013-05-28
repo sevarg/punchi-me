@@ -17,6 +17,7 @@ require "config.php";
         <link rel="stylesheet" type="text/css" href="js/jquery.plupload.queue/css/jquery.plupload.queue.css" />
         <link rel="stylesheet" type="text/css" href="/css/default.css" />
         <link rel="shortcut icon" href="favicon.ico">
+        <link rel="apple-touch-icon" href="/img/icon_128.png" />
     </head>
     <body>
         <div class="container">

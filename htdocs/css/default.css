@@ -40,6 +40,10 @@ body{
     margin: auto;
 }
 
+/**
+ *  FORM, LABELS AND FIELDS
+ */
+
 input, select, label{
     border: none;
     border-radius: 0;
@@ -105,6 +109,9 @@ input[type=submit],input[type=button]{
     display: block;
 }
 
+/**
+ *  TITLE AND FOOTER
+ */
 h1{
     font-weight: 300;
     color: #fff;
@@ -132,6 +139,9 @@ a{
     text-align: right;
 }
 
+/**
+ *  SOCIAL NETWORKS
+ */
 
 .socials{
     color: #000 !important;
@@ -156,6 +166,9 @@ a{
 }
 
 
+/**
+ *  PLUPLOAD
+ */
 .plupload_header{
     display: none;
 }
@@ -190,6 +203,10 @@ a{
     display: none;
 }
 
+
+/**
+ *  RESPONSIVE STUFF
+ */
 @media(max-width: 600px){
     .container{
         padding: 0px;
