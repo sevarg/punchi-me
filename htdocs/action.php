@@ -3,8 +3,8 @@
  * Process
  * @author Raphaël http://www.onlinecreation.pro
  */
-require "config.php";
-require "class/class.upload.php";
+require 'config.php';
+require 'class/class.upload.php';
 
 // Making a Zip archive
 $zip = new ZipArchive();
@@ -12,7 +12,7 @@ $zipfile = time() . rand(10, 99) . ".zip";
 $filename = TMP_DIR . DIRECTORY_SEPARATOR . $zipfile;
 $size = 0;
 if ($zip->open($filename, ZipArchive::CREATE) !== TRUE) {
-    exit("cannot create zip archive\n");
+    exit('cannot create zip archive');
 }
 
 // For each uploaded file
@@ -35,18 +35,18 @@ for ($i = 0; $i < $_POST['uploader_count']; $i++) {
     switch ($_POST['format']) {
         case 'JPEG100':
             $handle[$i]->jpeg_quality = 100;
-            $handle[$i]->image_convert = "jpeg";
+            $handle[$i]->image_convert = 'jpeg';
             break;
         case 'JPEG85' :
             $handle[$i]->jpeg_quality = 85;
-            $handle[$i]->image_convert = "jpeg";
+            $handle[$i]->image_convert = 'jpeg';
             break;
         case 'JPEG50' :
             $handle[$i]->jpeg_quality = 50;
-            $handle[$i]->image_convert = "jpeg";
+            $handle[$i]->image_convert = 'jpeg';
             break;
         case 'PNG' :
-            $handle[$i]->image_convert = "png";
+            $handle[$i]->image_convert = 'png';
             $handle[$i]->png_compression = 9;
             break;
     }
@@ -104,7 +104,7 @@ for ($i = 0; $i < $_POST['uploader_count']; $i++) {
     $newimage = $handle[$i]->process(null);
     if ($handle[$i]->processed) {
         // adding to the Zip archive the result of the previous process
-        $zip->addFromString($handle[$i]->file_dst_name_body . "." . $handle[$i]->file_dst_name_ext, $newimage);
+        $zip->addFromString($handle[$i]->file_dst_name_body . '.' . $handle[$i]->file_dst_name_ext, $newimage);
     }
 }
 // The Zip archive is done
@@ -116,5 +116,5 @@ if (filesize($filename) > 1) {
     echo $zipfile;
 } else {
     // An error occured, nothing to download
-    echo "KO";
+    echo 'KO';
 }

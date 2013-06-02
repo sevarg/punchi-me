@@ -4,7 +4,7 @@
  * @author Raphaël http://www.onlinecreation.pro
  */
 session_start();
-require "config.php";
+require 'config.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">

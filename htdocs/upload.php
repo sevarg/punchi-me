@@ -4,14 +4,14 @@
  * @author Moxicode http://www.plupload.com
  */
 
-require "config.php";
+require 'config.php';
 
 // HTTP headers for no cache etc
-header("Expires: Mon, 26 Jul 1997 05:00:00 GMT");
-header("Last-Modified: " . gmdate("D, d M Y H:i:s") . " GMT");
-header("Cache-Control: no-store, no-cache, must-revalidate");
-header("Cache-Control: post-check=0, pre-check=0", false);
-header("Pragma: no-cache");
+header('Expires: Mon, 26 Jul 1997 05:00:00 GMT');
+header('Last-Modified: ' . gmdate('D, d M Y H:i:s') . ' GMT');
+header('Cache-Control: no-store, no-cache, must-revalidate');
+header('Cache-Control: post-check=0, pre-check=0', false);
+header('Pragma: no-cache');
 
 // Settings
 $targetDir = TMP_DIR;
@@ -23,9 +23,9 @@ $maxFileAge = 5 * 3600; // Temp file age in seconds
 @set_time_limit(30 * 60);
 
 // Get parameters
-$chunk = isset($_REQUEST["chunk"]) ? intval($_REQUEST["chunk"]) : 0;
-$chunks = isset($_REQUEST["chunks"]) ? intval($_REQUEST["chunks"]) : 0;
-$fileName = isset($_REQUEST["name"]) ? $_REQUEST["name"] : '';
+$chunk = isset($_REQUEST['chunk']) ? intval($_REQUEST['chunk']) : 0;
+$chunks = isset($_REQUEST['chunks']) ? intval($_REQUEST['chunks']) : 0;
+$fileName = isset($_REQUEST['name']) ? $_REQUEST['name'] : '';
 
 // Clean the fileName for security reasons
 $fileName = preg_replace('/[^\w\._]+/', '_', $fileName);
@@ -56,7 +56,7 @@ if ($cleanupTargetDir) {
 			$tmpfilePath = $targetDir . DIRECTORY_SEPARATOR . $file;
 
 			// Remove temp file if it is older than the max age and is not the current file
-			if ((filemtime($tmpfilePath) < time() - $maxFileAge) && ($tmpfilePath != "{$filePath}.part")) {
+			if ((filemtime($tmpfilePath) < time() - $maxFileAge) && ($tmpfilePath != $filePath.'.part')) {
 				@unlink($tmpfilePath);
 			}
 		}
@@ -67,20 +67,20 @@ if ($cleanupTargetDir) {
 }	
 
 // Look for the content type header
-if (isset($_SERVER["HTTP_CONTENT_TYPE"]))
-	$contentType = $_SERVER["HTTP_CONTENT_TYPE"];
+if (isset($_SERVER['HTTP_CONTENT_TYPE']))
+	$contentType = $_SERVER['HTTP_CONTENT_TYPE'];
 
-if (isset($_SERVER["CONTENT_TYPE"]))
-	$contentType = $_SERVER["CONTENT_TYPE"];
+if (isset($_SERVER['CONTENT_TYPE']))
+	$contentType = $_SERVER['CONTENT_TYPE'];
 
 // Handle non multipart uploads older WebKit versions didn't support multipart in HTML5
-if (strpos($contentType, "multipart") !== false) {
+if (strpos($contentType, 'multipart') !== false) {
 	if (isset($_FILES['file']['tmp_name']) && is_uploaded_file($_FILES['file']['tmp_name'])) {
 		// Open temp file
-		$out = @fopen("{$filePath}.part", $chunk == 0 ? "wb" : "ab");
+		$out = @fopen($filePath.'.part', $chunk == 0 ? 'wb' : 'ab');
 		if ($out) {
 			// Read binary input stream and append it to temp file
-			$in = @fopen($_FILES['file']['tmp_name'], "rb");
+			$in = @fopen($_FILES['file']['tmp_name'], 'rb');
 
 			if ($in) {
 				while ($buff = fread($in, 4096))
@@ -96,10 +96,10 @@ if (strpos($contentType, "multipart") !== false) {
 		die('{"jsonrpc" : "2.0", "error" : {"code": 103, "message": "Failed to move uploaded file."}, "id" : "id"}');
 } else {
 	// Open temp file
-	$out = @fopen("{$filePath}.part", $chunk == 0 ? "wb" : "ab");
+	$out = @fopen($filePath.'.part', $chunk == 0 ? 'wb' : 'ab');
 	if ($out) {
 		// Read binary input stream and append it to temp file
-		$in = @fopen("php://input", "rb");
+		$in = @fopen('php://input', 'rb');
 
 		if ($in) {
 			while ($buff = fread($in, 4096))
@@ -116,7 +116,7 @@ if (strpos($contentType, "multipart") !== false) {
 // Check if file has been uploaded
 if (!$chunks || $chunk == $chunks - 1) {
 	// Strip the temp .part suffix off 
-	rename("{$filePath}.part", $filePath);
+	rename($filePath.'.part', $filePath);
 }
 
 die('{"jsonrpc" : "2.0", "result" : null, "id" : "id"}');
