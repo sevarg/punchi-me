@@ -1,12 +1,13 @@
 README
 ======
 
-strToMe
--------
+Punchi.me
+--------
 * Author :    Raphaël
 * Website :   http://www.onlinecreation.pro
 * Demo :      http://www.punchi.me
 * GIT :       https://github.com/onlinecreation/punchi-me
+* Licence :   GNU GPL v3.0
 
 Credits
 -------
