@@ -6,9 +6,9 @@
 // Main url of the website
 define('SITE_URL', 'http://www.punchi.me');
 // <title>
-define('SITE_TITLE', '');
+define('SITE_TITLE', 'Punchi.me');
 // meta name="description"
-define('SITE_DESCRIPTION', '');
+define('SITE_DESCRIPTION', 'Easy image manipulation');
 // Title of the website used by the social networks (AddThis)
 define('SITE_SOCIAL_NETWORKS_TITLE', '');
 // Description of the website used by the social networks (AddThis)

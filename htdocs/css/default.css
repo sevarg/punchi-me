@@ -83,6 +83,10 @@ label{
     width: 238px;
 }
 
+label i.fa{
+    color: #808;
+}
+
 input[type=number],input[type=text]{
     width: 150px;
     text-align: right; 
@@ -179,7 +183,8 @@ a{
 }
 
 .plupload_container{
-    background: url('../js/jquery.plupload.queue/img/transp50.png');
+    background: rgb(255,255,255);
+    background: rgba(255,255,255,0.5);
 }
 
 .plupload_content *{
@@ -187,11 +192,13 @@ a{
 }
 
 .plupload_content{
-    background: url('../js/jquery.plupload.queue/img/transp50.png');
+    background: rgb(255,255,255);
+    background: rgba(255,255,255,0.5);
 }
 
 .plupload_filelist_header, .plupload_filelist_footer{
-    background: url('../js/jquery.plupload.queue/img/transp50.png');
+    background: rgb(255,255,255);
+    background: rgba(255,255,255,0.5);
 }
 
 .plupload_scroll .plupload_filelist{

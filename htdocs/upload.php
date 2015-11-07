@@ -1,7 +1,12 @@
 <?php
 /**
+ * Punchi.me
  * Upload handler
+ * @author OnlineCreation - Raphaël
  * @author Moxicode http://www.plupload.com
+ * @licence GNU GPL v3.0
+ * @link http://www.onlinecreation.pro Authors' website
+ * @link http://www.punchi.me Demo
  */
 
 require 'config.php';

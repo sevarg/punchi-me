@@ -1,7 +1,11 @@
 <?php
 /**
+ * Punchi.me
  * Process
- * @author Raphaël http://www.onlinecreation.pro
+ * @author OnlineCreation - Raphaël
+ * @licence GNU GPL v3.0
+ * @link http://www.onlinecreation.pro Authors' website
+ * @link http://www.punchi.me Demo
  */
 require 'config.php';
 require 'class/class.upload.php';
@@ -98,6 +102,16 @@ for ($i = 0; $i < $_POST['uploader_count']; $i++) {
                 $handle[$i]->image_y = RESIZE_MAX_HEIGHT;
             }
             break;
+    }
+    
+    // rotate
+    if(in_array($_POST['rotation'],array(90,180,270))) {
+        $handle[$i]->image_rotate = $_POST['rotation'];
+    }
+    
+    // flip
+    if(in_array($_POST['flip'],array('h','v'))){
+        $handle[$i]->image_flip = $_POST['flip'];
     }
     
     // the upload object has some work to do. 
