@@ -106,9 +106,9 @@ require 'config.php';
                     <label>
                         <select name="format" id="format">
                             <option value="nochange">Don't change</option>
-                            <option value="JPEG100">JPEG (high quality)</option>
-                            <option value="JPEG85">JPEG (high quality)</option>
-                            <option value="JPEG50">JPEG (low quality)</option>
+                            <option value="JPEG100">JPEG (higher quality - 100)</option>
+                            <option value="JPEG85">JPEG (high quality - 85)</option>
+                            <option value="JPEG50">JPEG (medium quality - 50)</option>
                             <option value="PNG">PNG (best quality, heavy file)</option>
                         </select>
                     </label>
